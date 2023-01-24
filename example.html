@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nepali Typing</title>
+	<style>
+		.wrapper {
+			margin: 0 auto;
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper" style="width: 200px;">	
+		<div>
+			<label>Traditional Preeti Typing</label>
+			<textarea  class="convert-preeti" cols="30" rows="10"></textarea>
+		</div>
+		<br>
+		<div>
+			<label>Romanize Typing</label>
+			<textarea  class="convert-romanize" cols="30" rows="10"></textarea>
+		</div>
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="preeti.js"></script>
+	<script src="romanize.js"></script>
+	<script>
+		$('body').on('input', '.convert-preeti', function (event) {
+			var text = this.value;
+			var convert = setUnicodePreeti(text);
+			this.value = convert;
+
+			return true;
+		});
+
+		$('body').on('keypress', '.convert-romanize', function (event) {
+			return setUnicode(event,this);
+		});
+	</script>
+</body>
+</html>
